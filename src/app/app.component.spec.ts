@@ -1,5 +1,6 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { render } from '@testing-library/angular';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
@@ -13,6 +14,11 @@ describe('AppComponent', () => {
       ],
     }).compileComponents();
   }));
+
+  it('should render the component', async () => {
+    const { getByText } = await render(AppComponent);
+    expect(getByText('Welcome'));
+  });
 
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
